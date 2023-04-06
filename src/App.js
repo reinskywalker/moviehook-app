@@ -30,8 +30,9 @@ const [popularMovies, setPopularMovies] = useState([])
     })
  }
 
-  const search = (q) => {
-    console.log({q})
+  const search = async(q) => {
+    const qSearch = await searchMovie(q)
+    console.log({qSearch : qSearch});
   }
   return (
     <div className="App">
@@ -41,7 +42,7 @@ const [popularMovies, setPopularMovies] = useState([])
       placeholder="Search for movie" 
       className="movie-search"
       onChange={(target) => search(target.value)}
-      ></input>
+      />
         <div className="movie-container">
          <PopularMovieList />
         </div>
