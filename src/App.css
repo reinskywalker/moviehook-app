@@ -25,11 +25,11 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap:20px
+  gap:25px
 }
 
 .movie-wrapper {
-width: 500px;
+width: 550px;
 color: black;
 background-color: antiquewhite;
 }
@@ -47,6 +47,7 @@ background-color: antiquewhite;
   height: 60px;
   margin-top:30px;
   font-weight: bold;
+  padding-bottom: 30px;
 }
 
 .movie-date {
@@ -59,4 +60,8 @@ background-color: antiquewhite;
   font-weight: bold;
   font-size: 1.2em;
   text-decoration: underline;
+}
+
+.movie-image {
+  padding-top: 40px;
 }

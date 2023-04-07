@@ -23,25 +23,33 @@ const [popularMovies, setPopularMovies] = useState([])
               className="movie-image" 
               src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
             />
-            <div className="movie-date">{movie.release_date}</div>
+            <div className="movie-date">Release : {movie.release_date}</div>
             <div className="movie-rating">{movie.vote_average}</div>
           </div>
       )
     })
  }
 
-  const search = async(q) => {
-    const qSearch = await searchMovie(q)
-    console.log({qSearch : qSearch});
+ const searchList = async(q) => {
+  if(q.length >= 3) {
+    const query = await searchMovie(q)
+    setPopularMovies(query.results)
   }
+
+  else if(q.length < 1) {
+    const getDefault = await getMovieList()
+    setPopularMovies(getDefault)
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>.movie</h1>
       <input 
-      placeholder="Search for movie" 
-      className="movie-search"
-      onChange={(target) => search(target.value)}
+        placeholder="Search for movie" 
+        className="movie-search"
+        onChange={({target}) => searchList(target.value)}
       />
         <div className="movie-container">
          <PopularMovieList />
@@ -49,6 +57,6 @@ const [popularMovies, setPopularMovies] = useState([])
       </header>
     </div>
   );
-}
+  }
 
 export default App;
